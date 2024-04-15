@@ -4,17 +4,31 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 50px;
+  padding: 40px 38px 0 20px;
   background-color: ${({ theme }) => theme.colors.background};
   font-family: "Roboto", sans-serif;
 `;
 
-export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
+export const Input = styled.input`
+  padding: ${({ theme }) => theme.spacings.s16};
+  align-items: center;
   width: 100%;
-  max-width: 600px;
-  margin-right: 2rem;
+  border-radius: 6px;
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  transition: border-color 0.3s ease-in-out;
+
+  &:focus {
+    border-color: red; /* Change border color on focus */
+    &::placeholder {
+      transform: translateY(-14px); /* Move placeholder up slightly on focus */
+      font-size: 12px;
+    }
+  }
+
+  &::placeholder {
+    font-size: 14px; /* Adjust font size of placeholder */
+    transition: transform 0.3s ease-in-out;
+  }
 `;
 
 export const SelectContainer = styled.div`
@@ -23,8 +37,8 @@ export const SelectContainer = styled.div`
 `;
 
 export const Select = styled.select`
-  padding: 14px;
-
+  padding: 11px 0 0 10px;
+  height: 50px;
   border: 1px solid #ccc;
   border-radius: 4px;
   width: 100%;
@@ -32,9 +46,9 @@ export const Select = styled.select`
   -moz-appearance: none;
   appearance: none;
   background: url("./arrowDown.svg") no-repeat;
-  background-position: right 16px center;
+  background-position: right 17px center;
   background-size: 12px;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 20px;
 
   .state-select {
@@ -44,50 +58,32 @@ export const Select = styled.select`
 
 export const SelectLabel = styled.label`
   position: absolute;
-  top: 3px;
+  top: 8px;
   left: 10px;
   pointer-events: none;
   color: #999;
-  font-size: 14px;
-`;
-
-export const SectionTitle = styled.h2`
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-`;
-
-export const SectionSubtitle = styled.p`
-  color: #828282;
   font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 16px;
-  margin-bottom: ${({ theme }) => theme.spacings.s16};
 `;
 
-export const Input = styled.input`
-  padding: 16px;
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  border-radius: 6px;
-  width: 100%;
-`;
-
-export const OneFieldContainer = styled.div`
-  display: flex;
+export const OneField = styled.div`
   gap: 12px;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
+  width: 100%;
+  flex-direction: column;
 `;
-export const TwoFieldsContainer = styled.div`
+
+export const TwoFields = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 `;
-export const ThreeFieldsContainer = styled.div`
+
+export const ThreeFields = styled.div`
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 12px;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 `;
 
 export const Payment = styled.div`
@@ -112,9 +108,22 @@ export const PaymentOption = styled.div`
 export const PaymentContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.dividers};
   padding: ${({ theme }) => theme.spacings.s12};
+  margin-bottom: ${({ theme }) => theme.spacings.s16};
 `;
 
 export const Cards = styled.div`
   display: flex;
   gap: 3px;
+`;
+
+export const Center = styled.div`
+  display: flex;
+  place-content: center;
+  margin-top: ${({ theme }) => theme.spacings.s16};
+`;
+
+export const Subtitle = styled.p`
+  font-size: ${({ theme }) => theme.fontSizes.input};
+  line-height: ${({ theme }) => theme.lineHeights.input};
+  color: ${({ theme }) => theme.colors.inputColor};
 `;
