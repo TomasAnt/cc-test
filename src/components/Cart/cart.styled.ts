@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.section`
   flex: 1;
   background-color: #f5f5f5;
-  padding: 2rem;
+  padding: 16px 38px;
   max-width: 600px;
   font-family: "Roboto", sans-serif;
 `;
@@ -22,6 +22,7 @@ export const ImageContainer = styled.div`
   flex-direction: row;
   align-items: center;
   border-radius: 4px;
+  margin-top: 16px;
   gap: 16px;
   position: relative;
 
@@ -43,7 +44,10 @@ export const CartCount = styled.div`
   display: flex;
   left: 50px;
   top: -12px;
-  padding: 5px 10px;
+  min-height: 30px;
+  min-width: 30px;
+  justify-content: center;
+  align-items: center;
   border-radius: 100%;
 `;
 
@@ -121,4 +125,31 @@ export const WhyTitle = styled.p`
   color: ${({ theme }) => theme.colors.darkGrey};
   width: 100%;
   text-align: center;
+`;
+
+export const Content = styled.div`
+  display: flex;
+  padding: 16px 0;
+  align-items: flex-start;
+`;
+
+export const Box = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-left: 16px;
+`;
+
+export const BoxTitle = styled.p`
+  line-height: ${({ theme }) => theme.lineHeights.paragraph};
+  font-size: ${({ theme }) => theme.fontSizes.paragraph};
+  color: ${({ theme }) => theme.colors.darkGrey};
+  font-weight: ${({ theme }) => theme.fontWeights.bold};
+`;
+
+export const BoxParagraph = styled.p`
+  line-height: ${({ theme }) => theme.lineHeights.paragraph};
+  font-size: ${({ theme }) => theme.fontSizes.paragraph};
+  color: ${({ theme }) => theme.colors.darkGrey};
+  font-weight: ${({ theme }) => theme.fontWeights.normal};
 `;
