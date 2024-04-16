@@ -10,6 +10,10 @@ const GlobalStyle = createGlobalStyle`
 body {
   font-family: 'Roboto', sans-serif;
   background-image: linear-gradient(to right, #FFFFFF 50%, #F5F5F5 50%);
+
+  @media ${({ theme }) => theme.media.maxSmallDesktop} {
+    background-image: linear-gradient(to right,#F5F5F5 50%, #F5F5F5 50%);;
+  }
 }
 
 h1, h2, h3, h4, p {

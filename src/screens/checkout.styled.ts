@@ -9,7 +9,3 @@ export const PageLayout = styled.div`
 export const ContactFormSection = styled.section`
   flex: 1;
 `;
-
-export const CartSummarySection = styled.section`
-  flex: 1;
-`;
