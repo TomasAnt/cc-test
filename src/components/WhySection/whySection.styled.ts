@@ -1,10 +1,16 @@
 import styled from "styled-components";
 
 export const Why = styled.div`
-  padding: 16px 0;
-  display: flex;
+  padding-top: 16px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 16px;
   flex-direction: row;
   align-items: center;
+
+  @media ${({ theme }) => theme.media.maxSmallDesktop} {
+    grid-template-columns: 1fr 2fr 1fr;
+  }
 `;
 
 export const Separator = styled.div`

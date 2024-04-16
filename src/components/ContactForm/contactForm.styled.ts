@@ -20,6 +20,10 @@ export const Headline = styled.h3`
   color: ${({ theme }) => theme.colors.darkGrey};
   font-weight: ${({ theme }) => theme.fontWeights.bold};
   margin-bottom: ${({ theme }) => theme.spacings.s16};
+
+  @media ${({ theme }) => theme.media.maxSmallDesktop} {
+    margin-bottom: 0;
+  }
 `;
 
 export const Input = styled.input`
@@ -86,6 +90,11 @@ export const Contact = styled.div`
     padding: 16px;
     background-color: white;
     margin-bottom: 16px;
+    border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+
+    h3 {
+      margin-bottom: 12px;
+    }
   }
 `;
 
@@ -95,6 +104,10 @@ export const Delivery = styled.div`
     background-color: white;
     border-top: 1px solid ${({ theme }) => theme.colors.border};
     border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+
+    h3 {
+      margin-bottom: 12px;
+    }
   }
 `;
 
@@ -128,6 +141,32 @@ export const ThreeFields = styled.div`
   }
 `;
 
+export const PaymentFields = styled.div`
+  @media ${({ theme }) => theme.media.maxSmallDesktop} {
+    padding: 16px;
+    background-color: white;
+    margin-top: 16px;
+    border-top: 1px solid ${({ theme }) => theme.colors.border};
+
+    @media ${({ theme }) => theme.media.maxSmallDesktop} {
+      h3 {
+        margin-bottom: 8px;
+      }
+    }
+  }
+`;
+
+export const Disclaimer = styled.p`
+  font-size: ${({ theme }) => theme.fontSizes.paragraph};
+  line-height: ${({ theme }) => theme.lineHeights.paragraph};
+  color: ${({ theme }) => theme.colors.inputColor};
+  margin-bottom: 16px;
+
+  @media ${({ theme }) => theme.media.maxSmallDesktop} {
+    margin-bottom: 12px;
+  }
+`;
+
 export const Payment = styled.div`
   display: flex;
   justify-content: space-between;
@@ -144,6 +183,8 @@ export const PaymentOption = styled.div`
 
   span {
     white-space: nowrap;
+    font-size: ${({ theme }) => theme.fontSizes.input};
+    line-height: ${({ theme }) => theme.lineHeights.input};
   }
 `;
 
@@ -151,6 +192,14 @@ export const PaymentContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.dividers};
   padding: ${({ theme }) => theme.spacings.s12};
   margin-bottom: ${({ theme }) => theme.spacings.s16};
+
+  @media ${({ theme }) => theme.media.maxSmallDesktop} {
+    border-right: 1px solid ${({ theme }) => theme.colors.border};
+    border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+    border-left: 1px solid ${({ theme }) => theme.colors.border};
+    border-radius: 6px;
+    margin-bottom: 0;
+  }
 `;
 
 export const Cards = styled.div`
@@ -167,15 +216,42 @@ export const Center = styled.div`
   }
 `;
 
+export const IconContainer = styled.div`
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  margin: 16px;
+  gap: 8px;
+
+  @media ${({ theme }) => theme.media.maxSmallDesktop} {
+    background-color: ${({ theme }) => theme.colors.background};
+    margin: 0;
+    padding: 16px;
+    border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+
+    svg {
+      height: 14px;
+      width: 14px;
+    }
+  }
+`;
+
 export const Subtitle = styled.p`
   font-size: ${({ theme }) => theme.fontSizes.input};
   line-height: ${({ theme }) => theme.lineHeights.input};
   color: ${({ theme }) => theme.colors.inputColor};
 `;
 
-///////////////////////////////////////////////////////////////////////
-///////////////////// Cart Styles /////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
+export const ButtonContainer = styled.div`
+  display: flex;
+
+  @media ${({ theme }) => theme.media.maxSmallDesktop} {
+    margin: 0;
+    padding: 0 16px;
+    justify-content: center;
+    background-color: ${({ theme }) => theme.colors.background};
+  }
+`;
 
 export const CartContainer = styled.section`
   flex: 1;
@@ -186,5 +262,6 @@ export const CartContainer = styled.section`
   @media ${({ theme }) => theme.media.maxSmallDesktop} {
     max-width: 100%;
     background-color: #f5f5f5;
+    padding: 16px;
   }
 `;

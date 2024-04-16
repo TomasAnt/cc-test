@@ -31,8 +31,15 @@ const CartSection = () => {
   return (
     <>
       {isMobile && (
-        <ToggleButton onClick={toggleOpen}>
-          <div>Order overview {isOpen ? "▲" : "▼"}</div>{" "}
+        <ToggleButton onClick={toggleOpen} type="button">
+          <div>
+            Order overview{" "}
+            {isOpen ? (
+              <img src="./arrowUp.svg" alt="Arrow Up" />
+            ) : (
+              <img src="./arrowDown.svg" alt="Arrow Down" />
+            )}
+          </div>{" "}
           <div> ${totalPrice.toFixed(2)}</div>
         </ToggleButton>
       )}

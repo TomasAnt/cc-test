@@ -18,6 +18,10 @@ import {
   TwoFields,
   CartContainer,
   Delivery,
+  PaymentFields,
+  Disclaimer,
+  IconContainer,
+  ButtonContainer,
 } from "./contactForm.styled";
 import Button from "../Button/Button";
 import { states, countries, products } from "../../../config";
@@ -177,49 +181,62 @@ const ContactForm: React.FC = () => {
                   </SelectContainer>
                 </OneField>
               </Delivery>
-              <Headline>Payment</Headline>
-              <Payment>
-                <PaymentOption>
-                  <Input
-                    type="radio"
-                    id="creditCard"
-                    name="paymentMethod"
-                    value="Credit Card"
-                    defaultChecked
-                  />
-                  <span>Credit Card</span>
-                </PaymentOption>
-                <Cards>
-                  <img src="./visa.svg" />
-                  <img src="./masterCard.svg" />
-                  <img src="./amex.svg" />
-                  <img src="./dinnersClub.svg" />
-                  <img src="./others.svg" />
-                </Cards>
-              </Payment>
-              <PaymentContainer>
-                <OneField>
-                  <Input type="text" placeholder="Card number" />
-                </OneField>
-                <TwoFields>
-                  <Input type="text" placeholder="Expiration (MM/YY)" />
-                  <Input type="text" placeholder="Security code" />
-                </TwoFields>
-                <Input type="text" placeholder="Name on card" />
-              </PaymentContainer>
-              <Button $variant="green" type="submit" disabled={!formik.isValid}>
-                Submit
-              </Button>
-              <Center>
+              <PaymentFields>
+                <Headline>Payment</Headline>
+                <Disclaimer>
+                  All transactions are secured and Encrypted
+                </Disclaimer>
+                <Payment>
+                  <PaymentOption>
+                    <Input
+                      type="radio"
+                      id="creditCard"
+                      name="paymentMethod"
+                      value="Credit Card"
+                      defaultChecked
+                    />
+                    <span>Credit Card</span>
+                  </PaymentOption>
+                  <Cards>
+                    <img src="./visa.svg" />
+                    <img src="./masterCard.svg" />
+                    <img src="./amex.svg" />
+                    <img src="./dinnersClub.svg" />
+                    <img src="./others.svg" />
+                  </Cards>
+                </Payment>
+                <PaymentContainer>
+                  <OneField>
+                    <Input type="text" placeholder="Card number" />
+                  </OneField>
+                  <TwoFields>
+                    <Input type="text" placeholder="Expiration (MM/YY)" />
+                    <Input type="text" placeholder="Security code" />
+                  </TwoFields>
+                  <Input type="text" placeholder="Name on card" />
+                </PaymentContainer>
+              </PaymentFields>
+
+              <ButtonContainer>
+                <Button
+                  $variant="green"
+                  type="submit"
+                  disabled={!formik.isValid}
+                >
+                  Complete Order
+                </Button>
+              </ButtonContainer>
+              <IconContainer>
                 <img src="./securityDesktop.svg" />
                 <Subtitle>All transactions are secured and encrypted</Subtitle>
-              </Center>
+              </IconContainer>
             </StyledForm>
           )}
         </Formik>
       </Container>
       <CartContainer>
         {!isMobile && <CartSection />}
+
         <WhySection />
       </CartContainer>
     </Center>
