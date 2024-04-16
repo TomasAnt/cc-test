@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.section`
+export const CartContainer = styled.section`
   flex: 1;
   background-color: #f5f5f5;
   padding: 16px 38px;

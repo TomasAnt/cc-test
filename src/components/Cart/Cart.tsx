@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { products } from "../../../config";
 
 import React from "react";
@@ -7,7 +6,7 @@ import {
   BoxParagraph,
   BoxTitle,
   CartCount,
-  Container,
+  CartContainer,
   Content,
   ImageContainer,
   Price,
@@ -30,7 +29,7 @@ const Cart: React.FC = () => {
     0
   );
   return (
-    <Container>
+    <CartContainer>
       {products.map((product) => (
         <Product key={product.id}>
           <ImageContainer>
@@ -90,7 +89,7 @@ const Cart: React.FC = () => {
           </BoxParagraph>
         </Box>
       </Content>
-    </Container>
+    </CartContainer>
   );
 };
 

@@ -1,3 +1,23 @@
+export const products = [
+  {
+    id: 1,
+    title: "Logoipsum IPL", // product title
+    price: 99.99, // per item
+    count: 5,
+    imageUrl: "./product.png",
+    displayMode: "total", // or 'total'
+  },
+  // You can add more products here
+  // {
+  //   id: 2,
+  //   title: "Wavemax", // product title
+  //   price: 23.99, // per item
+  //   count: 3,
+  //   imageUrl: "./product.png",
+  //   displayMode: "each", // or 'total'
+  // },
+];
+
 export const states = [
   "Alabama",
   "Alaska",
@@ -113,24 +133,4 @@ export const countries = [
   "Finland",
   "France",
   "United States",
-];
-
-export const products = [
-  {
-    id: 1,
-    title: "Logoipsum IPL", // product title
-    price: 99.99, // per item
-    count: 5,
-    imageUrl: "./product.png",
-    displayMode: "total", // or 'total'
-  },
-  // You can add more products here
-  // {
-  //   id: 2,
-  //   title: "Wavemax", // product title
-  //   price: 23.99, // per item
-  //   count: 3,
-  //   imageUrl: "./product.png",
-  //   displayMode: "each", // or 'total'
-  // },
 ];
