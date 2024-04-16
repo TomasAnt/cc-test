@@ -2,10 +2,10 @@
 
 This project is bootstrapped with **Vite**. To run the project, execute the following commands in the root directory:
 
-\```bash
+
+```bash
 npm install
 npm run dev
-\```
 
 This will start the server on localhost.
 
