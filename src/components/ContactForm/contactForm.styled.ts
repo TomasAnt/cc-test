@@ -1,5 +1,20 @@
 import styled from "styled-components";
 
+export const ErrorMsg = styled.div`
+  position: absolute;
+  color: red;
+  font-size: 12px;
+  bottom: -15px;
+  left: 15px;
+  background-color: #fff;
+  z-index: 1;
+
+  @media ${({ theme }) => theme.media.maxSmallDesktop} {
+    font-size: 10px;
+    bottom: -13px;
+  }
+`;
+
 export const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -35,15 +50,15 @@ export const Input = styled.input`
   transition: border-color 0.3s ease-in-out;
 
   &:focus {
-    border-color: red; /* Change border color on focus */
+    border-color: red;
     &::placeholder {
-      transform: translateY(-14px); /* Move placeholder up slightly on focus */
+      transform: translateY(-14px);
       font-size: 12px;
     }
   }
 
   &::placeholder {
-    font-size: 14px; /* Adjust font size of placeholder */
+    font-size: 14px;
     transition: transform 0.3s ease-in-out;
   }
 `;
@@ -264,4 +279,11 @@ export const CartContainer = styled.section`
     background-color: #f5f5f5;
     padding: 16px;
   }
+`;
+
+export const Absolute = styled.div`
+  position: relative;
+  display: flex;
+  width: auto;
+  flex: 1;
 `;

@@ -1,54 +1,39 @@
-import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import { Formik, Field, ErrorMessage } from "formik";
 import {
-  Cards,
   Center,
-  Contact,
   Container,
+  Contact,
   Headline,
   Input,
-  OneField,
-  Payment,
-  PaymentContainer,
-  PaymentOption,
   Select,
   SelectContainer,
   SelectLabel,
-  Subtitle,
-  ThreeFields,
   TwoFields,
-  CartContainer,
+  OneField,
+  ThreeFields,
   Delivery,
   PaymentFields,
+  Payment,
+  PaymentOption,
+  Cards,
+  ButtonContainer,
   Disclaimer,
   IconContainer,
-  ButtonContainer,
+  Subtitle,
+  CartContainer,
+  PaymentContainer,
+  ErrorMsg,
+  Absolute,
 } from "./contactForm.styled";
 import Button from "../Button/Button";
-import { states, countries, products } from "../../../config";
-import { Formik, Form as FormikForm, Field, ErrorMessage } from "formik";
-import { validationSchema } from "../../utils/validationSchema";
-import styled from "styled-components";
-import WhySection from "../WhySection/WhySection";
-
+import { states, countries } from "../../../config";
 import CartSection from "../CartSection/CartSection";
+import WhySection from "../WhySection/WhySection";
 import useIsMobile from "../../hooks/useIsMobile";
+import { validationSchema } from "../../utils/validationSchema";
 
-type FormData = {
-  email: string;
-  firstName: string;
-  lastName: string;
-  address: string;
-  city: string;
-  state: string;
-  zip: string;
-  country: string;
-  cardNumber: string;
-  expiryDate: string;
-  securityCode: string;
-  nameOnCard: string;
-};
-
-export const StyledForm = styled(FormikForm)`
+const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -59,32 +44,10 @@ export const StyledForm = styled(FormikForm)`
   }
 `;
 
-const ContactForm: React.FC = () => {
-  const [formData, setFormData] = useState<FormData>({
-    email: "",
-    firstName: "",
-    lastName: "",
-    address: "",
-    city: "",
-    state: "Arizona",
-    zip: "",
-    country: "United States",
-    cardNumber: "",
-    expiryDate: "",
-    securityCode: "",
-    nameOnCard: "",
-  });
-
+const ContactForm = () => {
   const isMobile = useIsMobile();
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const initialValues: FormData = {
+  const initialValues = {
     email: "",
     firstName: "",
     lastName: "",
@@ -99,8 +62,9 @@ const ContactForm: React.FC = () => {
     nameOnCard: "",
   };
 
-  const handleSubmit = (values: FormData) => {
+  const handleSubmit = (values: object, actions: any) => {
     console.log(values);
+    actions.setSubmitting(false);
   };
 
   return (
@@ -112,88 +76,111 @@ const ContactForm: React.FC = () => {
           onSubmit={handleSubmit}
         >
           {(formik) => (
-            <StyledForm>
+            <StyledForm onSubmit={formik.handleSubmit}>
               {isMobile ? <CartSection /> : null}
               <Contact>
                 <Headline>Contact</Headline>
                 <OneField>
-                  <Input
-                    type="email"
-                    name="email"
-                    placeholder="Email Address"
-                  />
+                  <Absolute>
+                    <Field
+                      as={Input}
+                      type="email"
+                      name="email"
+                      placeholder="Email Address"
+                    />
+                    <ErrorMessage name="email" component={ErrorMsg} />
+                  </Absolute>
                 </OneField>
               </Contact>
               <Delivery>
                 <Headline>Delivery</Headline>
                 <TwoFields>
-                  <Input
-                    type="firstName"
-                    name="firstName"
-                    placeholder="First Name"
-                  />
-
-                  <Input
-                    type="lastName"
-                    name="lastName"
-                    placeholder="Last Name"
-                  />
+                  <Absolute>
+                    <Field
+                      as={Input}
+                      type="text"
+                      name="firstName"
+                      placeholder="First Name"
+                    />
+                    <ErrorMessage name="firstName" component={ErrorMsg} />
+                  </Absolute>
+                  <Absolute>
+                    <Field
+                      as={Input}
+                      type="text"
+                      name="lastName"
+                      placeholder="Last Name"
+                    />
+                    <ErrorMessage name="lastName" component={ErrorMsg} />
+                  </Absolute>
                 </TwoFields>
-
                 <OneField>
-                  <Input type="address" name="address" placeholder="Address" />
+                  <Absolute>
+                    <Field
+                      as={Input}
+                      type="text"
+                      name="address"
+                      placeholder="Address"
+                    />
+                    <ErrorMessage name="address" component={ErrorMsg} />
+                  </Absolute>
                 </OneField>
-
                 <ThreeFields>
-                  <Input type="city" name="city" placeholder="City" />
+                  <Absolute>
+                    <Field
+                      as={Input}
+                      type="text"
+                      name="city"
+                      placeholder="City"
+                    />
+                    <ErrorMessage name="city" component={ErrorMsg} />
+                  </Absolute>
                   <SelectContainer>
                     <SelectLabel htmlFor="state">State / Province</SelectLabel>
-                    <Select
-                      name="state"
-                      id="state"
-                      onChange={handleChange}
-                      value={formData.state}
-                    >
+                    <Field as={Select} name="state">
                       {states.map((state) => (
                         <option key={state} value={state}>
                           {state}
                         </option>
                       ))}
-                    </Select>
+                    </Field>
                   </SelectContainer>
-                  <Input type="zip" name="zip" placeholder="ZIP" />
+                  <Absolute>
+                    <Field
+                      as={Input}
+                      type="text"
+                      name="zip"
+                      placeholder="ZIP"
+                    />
+                    <ErrorMessage name="zip" component={ErrorMsg} />
+                  </Absolute>
                 </ThreeFields>
                 <OneField>
                   <SelectContainer>
                     <SelectLabel htmlFor="country">Country</SelectLabel>
-                    <Select
-                      name="country"
-                      id="country"
-                      onChange={handleChange}
-                      value={formData.country}
-                    >
+                    <Field as={Select} name="country">
                       {countries.map((country) => (
                         <option key={country} value={country}>
                           {country}
                         </option>
                       ))}
-                    </Select>
+                    </Field>
                   </SelectContainer>
                 </OneField>
               </Delivery>
               <PaymentFields>
                 <Headline>Payment</Headline>
                 <Disclaimer>
-                  All transactions are secured and Encrypted
+                  All transactions are secured and encrypted
                 </Disclaimer>
                 <Payment>
                   <PaymentOption>
-                    <Input
+                    <Field
+                      as={Input}
                       type="radio"
                       id="creditCard"
                       name="paymentMethod"
                       value="Credit Card"
-                      defaultChecked
                     />
                     <span>Credit Card</span>
                   </PaymentOption>
@@ -207,13 +194,45 @@ const ContactForm: React.FC = () => {
                 </Payment>
                 <PaymentContainer>
                   <OneField>
-                    <Input type="text" placeholder="Card number" />
+                    <Absolute>
+                      <Field
+                        as={Input}
+                        type="text"
+                        name="cardNumber"
+                        placeholder="Card number"
+                      />
+                      <ErrorMessage name="cardNumber" component={ErrorMsg} />
+                    </Absolute>
                   </OneField>
                   <TwoFields>
-                    <Input type="text" placeholder="Expiration (MM/YY)" />
-                    <Input type="text" placeholder="Security code" />
+                    <Absolute>
+                      <Field
+                        as={Input}
+                        type="text"
+                        name="expiryDate"
+                        placeholder="Expiration (MM/YY)"
+                      />
+                      <ErrorMessage name="expiryDate" component={ErrorMsg} />
+                    </Absolute>
+                    <Absolute>
+                      <Field
+                        as={Input}
+                        type="text"
+                        name="securityCode"
+                        placeholder="Security code"
+                      />
+                      <ErrorMessage name="securityCode" component={ErrorMsg} />
+                    </Absolute>
                   </TwoFields>
-                  <Input type="text" placeholder="Name on card" />
+                  <Absolute>
+                    <Field
+                      as={Input}
+                      type="text"
+                      name="nameOnCard"
+                      placeholder="Name on card"
+                    />
+                    <ErrorMessage name="nameOnCard" component={ErrorMsg} />
+                  </Absolute>
                 </PaymentContainer>
               </PaymentFields>
 
@@ -236,7 +255,6 @@ const ContactForm: React.FC = () => {
       </Container>
       <CartContainer>
         {!isMobile && <CartSection />}
-
         <WhySection />
       </CartContainer>
     </Center>
