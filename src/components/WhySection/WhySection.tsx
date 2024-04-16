@@ -1,58 +1,16 @@
-import styled from "styled-components";
-import { products } from "../../../config";
-
-import React from "react";
 import {
-  Box,
-  BoxParagraph,
-  BoxTitle,
-  CartCount,
-  Container,
-  Content,
-  ImageContainer,
-  Price,
-  Product,
-  Separator,
-  Subtotal,
-  SubtotalPrice,
-  SubtotalTitle,
-  Title,
-  Total,
-  TotalPrice,
-  TotalTitle,
   Why,
+  Separator,
   WhyTitle,
-} from "./cart.styled";
+  Content,
+  Box,
+  BoxTitle,
+  BoxParagraph,
+} from "./whySection.styled";
 
-const Cart: React.FC = () => {
-  const totalPrice = products.reduce(
-    (acc, product) => acc + product.price * product.count,
-    0
-  );
+const WhySection = () => {
   return (
-    <Container>
-      {products.map((product) => (
-        <Product key={product.id}>
-          <ImageContainer>
-            <img src={product.imageUrl} alt={product.title} />
-            <CartCount>{product.count}</CartCount>
-            <Title>{product.title}</Title>
-          </ImageContainer>
-          <Price>
-            {product.displayMode === "each"
-              ? `$${product.price.toFixed(2)}/each`
-              : `$${(product.price * product.count).toFixed(2)}`}
-          </Price>
-        </Product>
-      ))}
-      <Subtotal>
-        <SubtotalTitle>Subtotal</SubtotalTitle>
-        <SubtotalPrice>${totalPrice.toFixed(2)}</SubtotalPrice>
-      </Subtotal>
-      <Total>
-        <TotalTitle>Total</TotalTitle>
-        <TotalPrice>${totalPrice.toFixed(2)}</TotalPrice>
-      </Total>
+    <>
       <Why>
         <Separator />
         <WhyTitle>Why Choose Logoipsum</WhyTitle>
@@ -90,8 +48,8 @@ const Cart: React.FC = () => {
           </BoxParagraph>
         </Box>
       </Content>
-    </Container>
+    </>
   );
 };
 
-export default Cart;
+export default WhySection;

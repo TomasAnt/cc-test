@@ -8,6 +8,8 @@ interface StyledButtonProps {
 const defaultButton = css<StyledButtonProps>`
   cursor: pointer;
   display: flex;
+  width: 100%;
+  box-sizing: border-box;
   align-items: flex-start;
   justify-content: center;
   text-transform: uppercase;

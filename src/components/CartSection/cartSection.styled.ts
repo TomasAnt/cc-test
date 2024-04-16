@@ -1,13 +1,5 @@
 import styled from "styled-components";
 
-export const Container = styled.section`
-  flex: 1;
-  background-color: #f5f5f5;
-  padding: 16px 38px;
-  max-width: 600px;
-  font-family: "Roboto", sans-serif;
-`;
-
 export const Product = styled.div`
   display: flex;
   flex-direction: row;
@@ -105,51 +97,29 @@ export const TotalPrice = styled.p`
   color: ${({ theme }) => theme.colors.darkGrey};
 `;
 
-export const Why = styled.div`
-  padding: 16px 0;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+export const ToggleButton = styled.button`
+  display: none;
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  background-color: #f5f5f5;
+
+  @media (max-width: 992px) {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  }
 `;
 
-export const Separator = styled.div`
-  width: 100%;
-  height: 1px;
-  background-color: ${({ theme }) => theme.colors.border};
-`;
+export const ContentArea = styled.div<{ isOpen: boolean; isMobile: boolean }>`
+  display: ${(props) => (props.isMobile && !props.isOpen ? "none" : "block")};
 
-export const WhyTitle = styled.p`
-  font-size: ${({ theme }) => theme.fontSizes.input};
-  line-height: ${({ theme }) => theme.lineHeights.input};
-  font-weight: ${({ theme }) => theme.fontWeights.normal};
-  color: ${({ theme }) => theme.colors.darkGrey};
-  width: 100%;
-  text-align: center;
-`;
-
-export const Content = styled.div`
-  display: flex;
-  padding: 16px 0;
-  align-items: flex-start;
-`;
-
-export const Box = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-left: 16px;
-`;
-
-export const BoxTitle = styled.p`
-  line-height: ${({ theme }) => theme.lineHeights.paragraph};
-  font-size: ${({ theme }) => theme.fontSizes.paragraph};
-  color: ${({ theme }) => theme.colors.darkGrey};
-  font-weight: ${({ theme }) => theme.fontWeights.bold};
-`;
-
-export const BoxParagraph = styled.p`
-  line-height: ${({ theme }) => theme.lineHeights.paragraph};
-  font-size: ${({ theme }) => theme.fontSizes.paragraph};
-  color: ${({ theme }) => theme.colors.darkGrey};
-  font-weight: ${({ theme }) => theme.fontWeights.normal};
+  @media ${({ theme }) => theme.media.maxSmallDesktop} {
+    padding: 16px;
+    background-color: #f5f5f5;
+  }
 `;
