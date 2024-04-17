@@ -5,17 +5,42 @@ export const products = [
     price: 99.99, // per item
     count: 5,
     imageUrl: "./product.png",
-    displayMode: "total", // or 'total'
+    displayMode: "each", // or 'each'
   },
-  // You can add more products here
-  // {
-  //   id: 2,
-  //   title: "Wavemax", // product title
-  //   price: 23.99, // per item
-  //   count: 3,
-  //   imageUrl: "./product.png",
-  //   displayMode: "each", // or 'total'
-  // },
+  // You can add more products here too
+];
+
+export const SWAP_CONTACT_AND_PAYMENT = true; // or false to swap layout positions;
+
+export const buttonColor = "red"; // Change this value to "red", "green", or "blue"
+
+export const whySectionData = [
+  {
+    imgSrc: "./cashbackDesktop.svg",
+    title: "90 Day Money Back Guarantee",
+    paragraph:
+      "We love our products and we're confident you will too! If you're not in love with your LogoIpsum product, our easy return and refund policy is designed to make things as easy as possible for you.",
+  },
+  {
+    imgSrc: "./ratingDesktop.svg",
+    title: "Over 75,000+ Happy Customer",
+    paragraph:
+      "Everyone that tries LogoIpsum says it’s a must-have. We invest a lot of love and care into making our products, so you can enjoy seeing results when using it.",
+  },
+  {
+    imgSrc: "./customerServiceMobile.svg",
+    title: "Professional Customer Support",
+    paragraph:
+      "Our customer service works 24/7 for your satisfaction. Feel free to reach out to us anytime.",
+  },
+];
+
+export const paymentImages = [
+  { src: "./visa.svg", alt: "Visa" },
+  { src: "./masterCard.svg", alt: "MasterCard" },
+  { src: "./amex.svg", alt: "American Express" },
+  { src: "./dinnersClub.svg", alt: "Diners Club" },
+  { src: "./others.svg", alt: "Other Payment Methods" },
 ];
 
 export const states = [

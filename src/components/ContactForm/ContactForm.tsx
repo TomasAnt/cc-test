@@ -1,19 +1,16 @@
-import styled from "styled-components";
-import { Formik, Field, ErrorMessage } from "formik";
+import { Formik, Field } from "formik";
 import Button from "../Button/Button";
-import { states, countries } from "../../../config";
+import { states, countries, paymentImages, buttonColor } from "../../../config";
 import CartSection from "../CartSection/CartSection";
 import WhySection from "../WhySection/WhySection";
 import useIsMobile from "../../hooks/useIsMobile";
 import { validationSchema } from "../../utils/validationSchema";
 
-// Styled components
 import {
   Center,
   Container,
   Contact,
   Headline,
-  Input,
   Select,
   SelectContainer,
   SelectLabel,
@@ -31,43 +28,13 @@ import {
   Subtitle,
   CartContainer,
   PaymentContainer,
-  ErrorMsg,
-  Absolute,
+  StyledForm,
 } from "./contactForm.styled";
-
-const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 600px;
-
-  @media ${({ theme }) => theme.media.maxSmallDesktop} {
-    max-width: 100%;
-  }
-`;
+import { initialValues } from "../../utils/formikConfig";
+import { TextInputField } from "../FormFields/FormFields";
 
 const ContactForm = () => {
   const isMobile = useIsMobile();
-
-  const initialValues = {
-    email: "",
-    firstName: "",
-    lastName: "",
-    address: "",
-    city: "",
-    state: "Arizona",
-    zip: "",
-    country: "United States",
-    cardNumber: "",
-    expiryDate: "",
-    securityCode: "",
-    nameOnCard: "",
-  };
-
-  const handleSubmit = (values, actions) => {
-    console.log(values);
-    actions.setSubmitting(false);
-  };
 
   return (
     <Center>
@@ -75,7 +42,10 @@ const ContactForm = () => {
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
-          onSubmit={handleSubmit}
+          onSubmit={(values, actions) => {
+            console.log(values);
+            actions.setSubmitting(false);
+          }}
         >
           {(formik) => (
             <StyledForm onSubmit={formik.handleSubmit}>
@@ -83,90 +53,88 @@ const ContactForm = () => {
               <Contact>
                 <Headline>Contact</Headline>
                 <OneField>
-                  <Absolute>
-                    <Field
-                      as={Input}
-                      type="email"
-                      name="email"
-                      placeholder="Email Address"
-                    />
-                    <ErrorMessage name="email" component={ErrorMsg} />
-                  </Absolute>
+                  <TextInputField
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="Email Address"
+                    autocomplete="email"
+                  />
                 </OneField>
               </Contact>
               <Delivery>
                 <Headline>Delivery</Headline>
                 <TwoFields>
-                  <Absolute>
-                    <Field
-                      as={Input}
-                      type="text"
-                      name="firstName"
-                      placeholder="First Name"
-                    />
-                    <ErrorMessage name="firstName" component={ErrorMsg} />
-                  </Absolute>
-                  <Absolute>
-                    <Field
-                      as={Input}
-                      type="text"
-                      name="lastName"
-                      placeholder="Last Name"
-                    />
-                    <ErrorMessage name="lastName" component={ErrorMsg} />
-                  </Absolute>
+                  <TextInputField
+                    id="firstName"
+                    name="firstName"
+                    type="text"
+                    placeholder="First Name"
+                    autocomplete="given-name"
+                  />
+                  <TextInputField
+                    id="lastName"
+                    name="lastName"
+                    type="text"
+                    placeholder="Last Name"
+                    autocomplete="family-name"
+                  />
                 </TwoFields>
                 <OneField>
-                  <Absolute>
-                    <Field
-                      as={Input}
-                      type="text"
-                      name="address"
-                      placeholder="Address"
-                    />
-                    <ErrorMessage name="address" component={ErrorMsg} />
-                  </Absolute>
+                  <TextInputField
+                    id="address"
+                    name="address"
+                    type="text"
+                    placeholder="Address"
+                    autocomplete="street-address"
+                  />
                 </OneField>
                 <ThreeFields>
-                  <Absolute>
-                    <Field
-                      as={Input}
-                      type="text"
-                      name="city"
-                      placeholder="City"
-                    />
-                    <ErrorMessage name="city" component={ErrorMsg} />
-                  </Absolute>
+                  <TextInputField
+                    id="city"
+                    name="city"
+                    type="text"
+                    placeholder="City"
+                    autocomplete="address-level2"
+                  />
                   <SelectContainer>
                     <SelectLabel htmlFor="state">State / Province</SelectLabel>
-                    <Field as={Select} name="state">
+                    <Select
+                      id="state"
+                      name="state"
+                      as="select"
+                      autoComplete="address-level1"
+                    >
                       {states.map((state) => (
                         <option key={state} value={state}>
                           {state}
                         </option>
                       ))}
-                    </Field>
+                    </Select>
                   </SelectContainer>
-                  <Absolute>
-                    <Field
-                      as={Input}
-                      type="text"
-                      name="zip"
-                      placeholder="ZIP"
-                    />
-                    <ErrorMessage name="zip" component={ErrorMsg} />
-                  </Absolute>
+                  <TextInputField
+                    id="zip"
+                    name="zip"
+                    type="text"
+                    placeholder="ZIP"
+                    autocomplete="postal-code"
+                  />
                 </ThreeFields>
                 <OneField>
                   <SelectContainer>
                     <SelectLabel htmlFor="country">Country</SelectLabel>
-                    <Field as={Select} name="country">
+                    <Select
+                      id="country"
+                      name="country"
+                      as="select"
+                      autoComplete="country"
+                    >
                       {countries.map((country) => (
                         <option key={country} value={country}>
                           {country}
                         </option>
                       ))}
-                    </Field>
+                    </Select>
                   </SelectContainer>
                 </OneField>
               </Delivery>
@@ -178,69 +146,62 @@ const ContactForm = () => {
                 <Payment>
                   <PaymentOption>
                     <Field
-                      as={Input}
+                      checked
+                      as="input"
                       type="radio"
                       id="creditCard"
                       name="paymentMethod"
                       value="Credit Card"
+                      autoComplete="cc-type"
                     />
-                    <span>Credit Card</span>
+                    <label htmlFor="creditCard">Credit Card</label>
                   </PaymentOption>
                   <Cards>
-                    <img src="./visa.svg" alt="Visa" />
-                    <img src="./masterCard.svg" alt="MasterCard" />
-                    <img src="./amex.svg" alt="Amex" />
-                    <img src="./dinnersClub.svg" alt="Dinners Club" />
-                    <img src="./others.svg" alt="Others" />
+                    {paymentImages.map((image) => (
+                      <img key={image.alt} src={image.src} alt={image.alt} />
+                    ))}
                   </Cards>
                 </Payment>
                 <PaymentContainer>
                   <OneField>
-                    <Absolute>
-                      <Field
-                        as={Input}
-                        type="text"
-                        name="cardNumber"
-                        placeholder="Card number"
-                      />
-                      <ErrorMessage name="cardNumber" component={ErrorMsg} />
-                    </Absolute>
+                    <TextInputField
+                      id="cardNumber"
+                      name="cardNumber"
+                      type="text"
+                      placeholder="Card number"
+                      autocomplete="cc-number"
+                      maxLength={16}
+                    />
                   </OneField>
                   <TwoFields>
-                    <Absolute>
-                      <Field
-                        as={Input}
-                        type="text"
-                        name="expiryDate"
-                        placeholder="Expiration (MM/YY)"
-                      />
-                      <ErrorMessage name="expiryDate" component={ErrorMsg} />
-                    </Absolute>
-                    <Absolute>
-                      <Field
-                        as={Input}
-                        type="text"
-                        name="securityCode"
-                        placeholder="Security code"
-                      />
-                      <ErrorMessage name="securityCode" component={ErrorMsg} />
-                    </Absolute>
-                  </TwoFields>
-                  <Absolute>
-                    <Field
-                      as={Input}
+                    <TextInputField
+                      id="expiryDate"
+                      name="expiryDate"
                       type="text"
-                      name="nameOnCard"
-                      placeholder="Name on card"
+                      placeholder="Expiration (MM/YY)"
+                      autocomplete="cc-exp"
                     />
-                    <ErrorMessage name="nameOnCard" component={ErrorMsg} />
-                  </Absolute>
+                    <TextInputField
+                      id="securityCode"
+                      name="securityCode"
+                      type="text"
+                      placeholder="Security code"
+                      autocomplete="cc-csc"
+                      maxLength={3}
+                    />
+                  </TwoFields>
+                  <TextInputField
+                    id="nameOnCard"
+                    name="nameOnCard"
+                    type="text"
+                    placeholder="Name on card"
+                    autocomplete="cc-name"
+                  />
                 </PaymentContainer>
               </PaymentFields>
-
               <ButtonContainer>
                 <Button
-                  $variant="green"
+                  $variant={buttonColor}
                   type="submit"
                   disabled={!formik.isValid}
                 >

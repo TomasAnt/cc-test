@@ -1,6 +1,6 @@
+// CartSection.jsx
 import { useState } from "react";
 import { products } from "../../../config";
-
 import {
   Product,
   ImageContainer,
@@ -15,6 +15,9 @@ import {
   TotalPrice,
   ToggleButton,
   ContentArea,
+  OrderTotal,
+  OrderOverview,
+  MobileOrder,
 } from "./cartSection.styled";
 import useIsMobile from "../../hooks/useIsMobile";
 
@@ -28,22 +31,26 @@ const CartSection = () => {
 
   const toggleOpen = () => setIsOpen(!isOpen);
 
+  if (isMobile === undefined) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
       {isMobile && (
         <ToggleButton onClick={toggleOpen} type="button">
-          <div>
-            Order overview
+          <MobileOrder>
+            <OrderOverview>Order overview</OrderOverview>
             {isOpen ? (
               <img src="./arrowUp.svg" alt="Arrow Up" />
             ) : (
               <img src="./arrowDown.svg" alt="Arrow Down" />
             )}
-          </div>
-          <div> ${totalPrice.toFixed(2)}</div>
+          </MobileOrder>
+          <OrderTotal> ${totalPrice.toFixed(2)}</OrderTotal>
         </ToggleButton>
       )}
-      <ContentArea isOpen={isOpen} isMobile={isMobile}>
+      <ContentArea $isOpen={isOpen} $isMobile={isMobile}>
         {products.map((product) => (
           <Product key={product.id}>
             <ImageContainer>

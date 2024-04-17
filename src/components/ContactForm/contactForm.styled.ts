@@ -1,17 +1,18 @@
 import styled from "styled-components";
 
-export const ErrorMsg = styled.div`
-  position: absolute;
-  color: red;
-  font-size: 12px;
-  bottom: -15px;
-  left: 15px;
-  background-color: #fff;
-  z-index: 1;
+import { SWAP_CONTACT_AND_PAYMENT } from "../../../config";
+
+const contactOrder = SWAP_CONTACT_AND_PAYMENT ? 2 : 1;
+const paymentOrder = SWAP_CONTACT_AND_PAYMENT ? 1 : 3;
+
+export const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
 
   @media ${({ theme }) => theme.media.maxSmallDesktop} {
-    font-size: 10px;
-    bottom: -13px;
+    max-width: 100%;
   }
 `;
 
@@ -38,28 +39,6 @@ export const Headline = styled.h3`
 
   @media ${({ theme }) => theme.media.maxSmallDesktop} {
     margin-bottom: 0;
-  }
-`;
-
-export const Input = styled.input`
-  padding: ${({ theme }) => theme.spacings.s16};
-  align-items: center;
-  width: 100%;
-  border-radius: 6px;
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  transition: border-color 0.3s ease-in-out;
-
-  &:focus {
-    border-color: red;
-    &::placeholder {
-      transform: translateY(-14px);
-      font-size: 12px;
-    }
-  }
-
-  &::placeholder {
-    font-size: 14px;
-    transition: transform 0.3s ease-in-out;
   }
 `;
 
@@ -100,6 +79,7 @@ export const SelectLabel = styled.label`
 export const Contact = styled.div`
   display: flex;
   flex-direction: column;
+  order: ${contactOrder}; /* Conditional order based on config */
 
   @media ${({ theme }) => theme.media.maxSmallDesktop} {
     padding: 16px;
@@ -113,7 +93,26 @@ export const Contact = styled.div`
   }
 `;
 
+export const PaymentFields = styled.div`
+  order: ${paymentOrder}; /* Conditional order based on config */
+
+  @media ${({ theme }) => theme.media.maxSmallDesktop} {
+    padding: 16px;
+    background-color: white;
+    margin-top: 16px;
+    border-top: 1px solid ${({ theme }) => theme.colors.border};
+
+    @media ${({ theme }) => theme.media.maxSmallDesktop} {
+      h3 {
+        margin-bottom: 8px;
+      }
+    }
+  }
+`;
+
 export const Delivery = styled.div`
+  order: 2;
+
   @media ${({ theme }) => theme.media.maxSmallDesktop} {
     padding: 16px;
     background-color: white;
@@ -122,6 +121,39 @@ export const Delivery = styled.div`
 
     h3 {
       margin-bottom: 12px;
+    }
+  }
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  order: 4;
+
+  @media ${({ theme }) => theme.media.maxSmallDesktop} {
+    margin: 0;
+    padding: 0 16px;
+    justify-content: center;
+    background-color: ${({ theme }) => theme.colors.background};
+  }
+`;
+
+export const IconContainer = styled.div`
+  display: flex;
+  align-items: baseline;
+  order: 5;
+  justify-content: center;
+  margin: ${({ theme }) => theme.spacings.s16};
+  gap: 8px;
+
+  @media ${({ theme }) => theme.media.maxSmallDesktop} {
+    background-color: ${({ theme }) => theme.colors.background};
+    margin: 0;
+    padding: ${({ theme }) => theme.spacings.s16};
+    border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+
+    svg {
+      height: ${({ theme }) => theme.spacings.s14};
+      width: ${({ theme }) => theme.spacings.s14};
     }
   }
 `;
@@ -156,21 +188,6 @@ export const ThreeFields = styled.div`
   }
 `;
 
-export const PaymentFields = styled.div`
-  @media ${({ theme }) => theme.media.maxSmallDesktop} {
-    padding: 16px;
-    background-color: white;
-    margin-top: 16px;
-    border-top: 1px solid ${({ theme }) => theme.colors.border};
-
-    @media ${({ theme }) => theme.media.maxSmallDesktop} {
-      h3 {
-        margin-bottom: 8px;
-      }
-    }
-  }
-`;
-
 export const Disclaimer = styled.p`
   font-size: ${({ theme }) => theme.fontSizes.paragraph};
   line-height: ${({ theme }) => theme.lineHeights.paragraph};
@@ -196,7 +213,7 @@ export const PaymentOption = styled.div`
   align-items: center;
   gap: ${({ theme }) => theme.spacings.s16};
 
-  span {
+  label {
     white-space: nowrap;
     font-size: ${({ theme }) => theme.fontSizes.input};
     line-height: ${({ theme }) => theme.lineHeights.input};
@@ -231,41 +248,10 @@ export const Center = styled.div`
   }
 `;
 
-export const IconContainer = styled.div`
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  margin: 16px;
-  gap: 8px;
-
-  @media ${({ theme }) => theme.media.maxSmallDesktop} {
-    background-color: ${({ theme }) => theme.colors.background};
-    margin: 0;
-    padding: 16px;
-    border-bottom: 1px solid ${({ theme }) => theme.colors.border};
-
-    svg {
-      height: 14px;
-      width: 14px;
-    }
-  }
-`;
-
 export const Subtitle = styled.p`
   font-size: ${({ theme }) => theme.fontSizes.input};
   line-height: ${({ theme }) => theme.lineHeights.input};
   color: ${({ theme }) => theme.colors.inputColor};
-`;
-
-export const ButtonContainer = styled.div`
-  display: flex;
-
-  @media ${({ theme }) => theme.media.maxSmallDesktop} {
-    margin: 0;
-    padding: 0 16px;
-    justify-content: center;
-    background-color: ${({ theme }) => theme.colors.background};
-  }
 `;
 
 export const CartContainer = styled.section`
@@ -276,14 +262,7 @@ export const CartContainer = styled.section`
 
   @media ${({ theme }) => theme.media.maxSmallDesktop} {
     max-width: 100%;
-    background-color: #f5f5f5;
-    padding: 16px;
+    background-color: ${({ theme }) => theme.colors.lightGrey};
+    padding: ${({ theme }) => theme.spacings.s16};
   }
-`;
-
-export const Absolute = styled.div`
-  position: relative;
-  display: flex;
-  width: auto;
-  flex: 1;
 `;
