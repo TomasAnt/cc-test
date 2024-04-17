@@ -15,7 +15,7 @@ export const ImageContainer = styled.div`
   align-items: center;
   border-radius: 4px;
   margin-top: 16px;
-  gap: 16px;
+  gap: ${({ theme }) => theme.spacings.s16};
   position: relative;
 
   width: 100%;
@@ -105,7 +105,7 @@ export const ToggleButton = styled.button`
   font: inherit;
   cursor: pointer;
   outline: inherit;
-  background-color: #f5f5f5;
+  background-color: ${({ theme }) => theme.colors.lightGrey};
 
   @media (max-width: 992px) {
     display: flex;
@@ -119,7 +119,7 @@ export const ContentArea = styled.div<{ isOpen: boolean; isMobile: boolean }>`
   display: ${(props) => (props.isMobile && !props.isOpen ? "none" : "block")};
 
   @media ${({ theme }) => theme.media.maxSmallDesktop} {
-    padding: 16px;
-    background-color: #f5f5f5;
+    padding: ${({ theme }) => theme.spacings.s16};
+    background-color: ${({ theme }) => theme.colors.lightGrey};
   }
 `;

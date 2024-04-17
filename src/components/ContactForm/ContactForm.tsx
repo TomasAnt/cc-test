@@ -1,5 +1,13 @@
 import styled from "styled-components";
 import { Formik, Field, ErrorMessage } from "formik";
+import Button from "../Button/Button";
+import { states, countries } from "../../../config";
+import CartSection from "../CartSection/CartSection";
+import WhySection from "../WhySection/WhySection";
+import useIsMobile from "../../hooks/useIsMobile";
+import { validationSchema } from "../../utils/validationSchema";
+
+// Styled components
 import {
   Center,
   Container,
@@ -26,12 +34,6 @@ import {
   ErrorMsg,
   Absolute,
 } from "./contactForm.styled";
-import Button from "../Button/Button";
-import { states, countries } from "../../../config";
-import CartSection from "../CartSection/CartSection";
-import WhySection from "../WhySection/WhySection";
-import useIsMobile from "../../hooks/useIsMobile";
-import { validationSchema } from "../../utils/validationSchema";
 
 const StyledForm = styled.form`
   display: flex;
@@ -62,7 +64,7 @@ const ContactForm = () => {
     nameOnCard: "",
   };
 
-  const handleSubmit = (values: object, actions: any) => {
+  const handleSubmit = (values, actions) => {
     console.log(values);
     actions.setSubmitting(false);
   };
@@ -77,7 +79,7 @@ const ContactForm = () => {
         >
           {(formik) => (
             <StyledForm onSubmit={formik.handleSubmit}>
-              {isMobile ? <CartSection /> : null}
+              {isMobile && <CartSection />}
               <Contact>
                 <Headline>Contact</Headline>
                 <OneField>
@@ -185,11 +187,11 @@ const ContactForm = () => {
                     <span>Credit Card</span>
                   </PaymentOption>
                   <Cards>
-                    <img src="./visa.svg" />
-                    <img src="./masterCard.svg" />
-                    <img src="./amex.svg" />
-                    <img src="./dinnersClub.svg" />
-                    <img src="./others.svg" />
+                    <img src="./visa.svg" alt="Visa" />
+                    <img src="./masterCard.svg" alt="MasterCard" />
+                    <img src="./amex.svg" alt="Amex" />
+                    <img src="./dinnersClub.svg" alt="Dinners Club" />
+                    <img src="./others.svg" alt="Others" />
                   </Cards>
                 </Payment>
                 <PaymentContainer>
@@ -246,7 +248,7 @@ const ContactForm = () => {
                 </Button>
               </ButtonContainer>
               <IconContainer>
-                <img src="./securityDesktop.svg" />
+                <img src="./securityDesktop.svg" alt="Security Icon" />
                 <Subtitle>All transactions are secured and encrypted</Subtitle>
               </IconContainer>
             </StyledForm>
