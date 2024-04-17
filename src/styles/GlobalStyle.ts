@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
 
 body {
   font-family: 'Roboto', sans-serif;
-  background-image: linear-gradient(to right, #FFFFFF 52.5%, #F5F5F5 47.5%);
+  background-image: linear-gradient(to right, #FFFFFF 51%, #F5F5F5 49%);
 
   @media ${({ theme }) => theme.media.maxSmallDesktop} {
     background-image: linear-gradient(to right,#F5F5F5 50%, #F5F5F5 50%);;
