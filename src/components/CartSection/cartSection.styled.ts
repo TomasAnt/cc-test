@@ -1,4 +1,57 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const slideIn = keyframes`
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
+  to {
+    max-height: 1000px;
+    opacity: 1;
+  }
+`;
+
+const slideOut = keyframes`
+  from {
+    max-height: 1000px;
+    opacity: 1;
+  }
+  to {
+    max-height: 0;
+    opacity: 0;
+  }
+`;
+
+export const ToggleButton = styled.button`
+  display: none;
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  background-color: ${({ theme }) => theme.colors.lightGrey};
+
+  @media (max-width: 992px) {
+    display: flex;
+    justify-content: space-between;
+    padding: ${({ theme }) => theme.spacings.s16};
+    border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  }
+`;
+
+export const ContentArea = styled.div<{ $isOpen: boolean; $isMobile: boolean }>`
+  display: ${(props) => (props.$isMobile && !props.$isOpen ? "none" : "block")};
+
+  @media ${({ theme }) => theme.media.maxSmallDesktop} {
+    padding: ${({ theme }) => theme.spacings.s16};
+    background-color: ${({ theme }) => theme.colors.lightGrey};
+    transition: max-height 0.3s ease-in-out;
+    overflow: hidden;
+    animation: ${({ $isOpen }) => ($isOpen ? slideIn : slideOut)} 0.7s
+      ease-in-out forwards;
+  }
+`;
 
 export const Product = styled.div`
   display: flex;
@@ -15,7 +68,7 @@ export const ImageContainer = styled.div`
   align-items: center;
   border-radius: 4px;
   margin-top: 16px;
-  gap: 16px;
+  gap: ${({ theme }) => theme.spacings.s16};
   position: relative;
 
   width: 100%;
@@ -23,16 +76,16 @@ export const ImageContainer = styled.div`
   img {
     height: 64px;
     width: 64px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid ${({ theme }) => theme.colors.border};
     border-radius: 4px;
-    background-color: #fff;
+    background-color: ${({ theme }) => theme.colors.background};
   }
 `;
 
 export const CartCount = styled.div`
   position: absolute;
-  background-color: #5c5c5c;
-  color: #fff;
+  background-color: ${({ theme }) => theme.colors.paragraphColor};
+  color: ${({ theme }) => theme.colors.background};
   display: flex;
   left: 50px;
   top: -12px;
@@ -90,6 +143,7 @@ export const TotalTitle = styled.p`
   font-weight: ${({ theme }) => theme.fontWeights.bold};
   color: ${({ theme }) => theme.colors.darkGrey};
 `;
+
 export const TotalPrice = styled.p`
   font-size: ${({ theme }) => theme.fontSizes.h4};
   line-height: ${({ theme }) => theme.lineHeights.h4};
@@ -97,29 +151,21 @@ export const TotalPrice = styled.p`
   color: ${({ theme }) => theme.colors.darkGrey};
 `;
 
-export const ToggleButton = styled.button`
-  display: none;
-  background: none;
-  border: none;
-  color: inherit;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
-  background-color: #f5f5f5;
-
-  @media (max-width: 992px) {
-    display: flex;
-    justify-content: space-between;
-    padding: 16px;
-    border-bottom: 1px solid ${({ theme }) => theme.colors.border};
-  }
+export const OrderTotal = styled.p`
+  font-size: ${({ theme }) => theme.fontSizes.input};
+  line-height: ${({ theme }) => theme.lineHeights.input};
+  font-weight: ${({ theme }) => theme.fontWeights.medium};
+  color: ${({ theme }) => theme.colors.darkGrey};
 `;
 
-export const ContentArea = styled.div<{ isOpen: boolean; isMobile: boolean }>`
-  display: ${(props) => (props.isMobile && !props.isOpen ? "none" : "block")};
+export const OrderOverview = styled.span`
+  font-size: ${({ theme }) => theme.fontSizes.input};
+  font-weight: ${({ theme }) => theme.fontWeights.normal};
+  line-height: ${({ theme }) => theme.lineHeights.input};
+  color: ${({ theme }) => theme.colors.darkGrey};
+`;
 
-  @media ${({ theme }) => theme.media.maxSmallDesktop} {
-    padding: 16px;
-    background-color: #f5f5f5;
-  }
+export const MobileOrder = styled.div`
+  display: flex;
+  gap: ${({ theme }) => theme.spacings.s8};
 `;

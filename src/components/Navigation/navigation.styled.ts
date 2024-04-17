@@ -14,5 +14,5 @@ export const NavContent = styled.nav`
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
-  padding: 16px;
+  padding: ${({ theme }) => theme.spacings.s16};
 `;

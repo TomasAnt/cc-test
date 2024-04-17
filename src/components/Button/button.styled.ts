@@ -26,7 +26,7 @@ const defaultButton = css<StyledButtonProps>`
   box-shadow: 0px 4px 10px 0px rgba(67, 40, 16, 0.24);
 
   @media ${({ theme }) => theme.media.maxPhone} {
-    font-size: 14px;
+    font-size: ${({ theme }) => theme.fontSizes.input};
     letter-spacing: 0.9px;
     padding: 12px 32px;
   }

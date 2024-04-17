@@ -1,0 +1,69 @@
+.
+├── README.md
+├── config.ts
+├── index.html
+├── package-lock.json
+├── package.json
+├── project_structure.txt
+├── public
+│   ├── amex.svg
+│   ├── arrowDown.svg
+│   ├── arrowUp.svg
+│   ├── cartDesktop.svg
+│   ├── cartMobile.svg
+│   ├── cashbackDesktop.svg
+│   ├── cashbackMobile.svg
+│   ├── customerServiceMobile.svg
+│   ├── dinnersClub.svg
+│   ├── logoDesktop.svg
+│   ├── logoMobile.svg
+│   ├── masterCard.svg
+│   ├── others.svg
+│   ├── product.png
+│   ├── ratingDesktop.svg
+│   ├── ratingMobile.svg
+│   ├── securityDesktop.svg
+│   ├── securityMobile.svg
+│   ├── visa.svg
+│   └── vite.svg
+├── src
+│   ├── App.tsx
+│   ├── assets
+│   │   └── react.svg
+│   ├── components
+│   │   ├── Button
+│   │   │   ├── Button.tsx
+│   │   │   └── button.styled.ts
+│   │   ├── CartSection
+│   │   │   ├── CartSection.tsx
+│   │   │   └── cartSection.styled.ts
+│   │   ├── ContactForm
+│   │   │   ├── ContactForm.tsx
+│   │   │   └── contactForm.styled.ts
+│   │   ├── Navigation
+│   │   │   ├── Navigation.tsx
+│   │   │   └── navigation.styled.ts
+│   │   └── WhySection
+│   │       ├── WhySection.tsx
+│   │       └── whySection.styled.ts
+│   ├── hooks
+│   │   └── useIsMobile.ts
+│   ├── main.tsx
+│   ├── screens
+│   │   ├── Checkout.tsx
+│   │   └── checkout.styled.ts
+│   ├── styles
+│   │   ├── DesignVariables.ts
+│   │   ├── GlobalStyle.ts
+│   │   ├── StyledComponents.d.ts
+│   │   └── SystemDesign.ts
+│   ├── typings
+│   │   └── GlobalTypes.ts
+│   ├── utils
+│   │   └── validationSchema.ts
+│   └── vite-env.d.ts
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
+
+15 directories, 52 files

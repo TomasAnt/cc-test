@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const Why = styled.div`
-  padding-top: 16px;
+  padding-top: ${({ theme }) => theme.spacings.s16};
   display: grid;
   grid-template-columns: 1fr auto 1fr;
-  gap: 16px;
+  gap: ${({ theme }) => theme.spacings.s16};
   flex-direction: row;
   align-items: center;
 
@@ -37,8 +37,8 @@ export const Content = styled.div`
 export const Box = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-left: 16px;
+  gap: ${({ theme }) => theme.spacings.s8};
+  margin-left: ${({ theme }) => theme.spacings.s16};
 `;
 
 export const BoxTitle = styled.p`

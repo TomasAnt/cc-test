@@ -1,107 +1,40 @@
-import React, { useEffect, useState } from "react";
+import { Formik, Field } from "formik";
+import Button from "../Button/Button";
+import { states, countries, paymentImages, buttonColor } from "../../../config";
+import CartSection from "../CartSection/CartSection";
+import WhySection from "../WhySection/WhySection";
+import useIsMobile from "../../hooks/useIsMobile";
+import { validationSchema } from "../../utils/validationSchema";
+
 import {
-  Cards,
   Center,
-  Contact,
   Container,
+  Contact,
   Headline,
-  Input,
-  OneField,
-  Payment,
-  PaymentContainer,
-  PaymentOption,
   Select,
   SelectContainer,
   SelectLabel,
-  Subtitle,
-  ThreeFields,
   TwoFields,
-  CartContainer,
+  OneField,
+  ThreeFields,
   Delivery,
   PaymentFields,
+  Payment,
+  PaymentOption,
+  Cards,
+  ButtonContainer,
   Disclaimer,
   IconContainer,
-  ButtonContainer,
+  Subtitle,
+  CartContainer,
+  PaymentContainer,
+  StyledForm,
 } from "./contactForm.styled";
-import Button from "../Button/Button";
-import { states, countries, products } from "../../../config";
-import { Formik, Form as FormikForm, Field, ErrorMessage } from "formik";
-import { validationSchema } from "../../utils/validationSchema";
-import styled from "styled-components";
-import WhySection from "../WhySection/WhySection";
+import { initialValues } from "../../utils/formikConfig";
+import { TextInputField } from "../FormFields/FormFields";
 
-import CartSection from "../CartSection/CartSection";
-import useIsMobile from "../../hooks/useIsMobile";
-
-type FormData = {
-  email: string;
-  firstName: string;
-  lastName: string;
-  address: string;
-  city: string;
-  state: string;
-  zip: string;
-  country: string;
-  cardNumber: string;
-  expiryDate: string;
-  securityCode: string;
-  nameOnCard: string;
-};
-
-export const StyledForm = styled(FormikForm)`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 600px;
-
-  @media ${({ theme }) => theme.media.maxSmallDesktop} {
-    max-width: 100%;
-  }
-`;
-
-const ContactForm: React.FC = () => {
-  const [formData, setFormData] = useState<FormData>({
-    email: "",
-    firstName: "",
-    lastName: "",
-    address: "",
-    city: "",
-    state: "Arizona",
-    zip: "",
-    country: "United States",
-    cardNumber: "",
-    expiryDate: "",
-    securityCode: "",
-    nameOnCard: "",
-  });
-
+const ContactForm = () => {
   const isMobile = useIsMobile();
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const initialValues: FormData = {
-    email: "",
-    firstName: "",
-    lastName: "",
-    address: "",
-    city: "",
-    state: "Arizona",
-    zip: "",
-    country: "United States",
-    cardNumber: "",
-    expiryDate: "",
-    securityCode: "",
-    nameOnCard: "",
-  };
-
-  const handleSubmit = (values: FormData) => {
-    console.log(values);
-  };
 
   return (
     <Center>
@@ -109,50 +42,68 @@ const ContactForm: React.FC = () => {
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
-          onSubmit={handleSubmit}
+          onSubmit={(values, actions) => {
+            console.log(values);
+            actions.setSubmitting(false);
+          }}
         >
           {(formik) => (
-            <StyledForm>
-              {isMobile ? <CartSection /> : null}
+            <StyledForm onSubmit={formik.handleSubmit}>
+              {isMobile && <CartSection />}
               <Contact>
                 <Headline>Contact</Headline>
                 <OneField>
-                  <Input
-                    type="email"
+                  <TextInputField
+                    id="email"
                     name="email"
+                    type="email"
                     placeholder="Email Address"
+                    autocomplete="email"
                   />
                 </OneField>
               </Contact>
               <Delivery>
                 <Headline>Delivery</Headline>
                 <TwoFields>
-                  <Input
-                    type="firstName"
+                  <TextInputField
+                    id="firstName"
                     name="firstName"
+                    type="text"
                     placeholder="First Name"
+                    autocomplete="given-name"
                   />
-
-                  <Input
-                    type="lastName"
+                  <TextInputField
+                    id="lastName"
                     name="lastName"
+                    type="text"
                     placeholder="Last Name"
+                    autocomplete="family-name"
                   />
                 </TwoFields>
-
                 <OneField>
-                  <Input type="address" name="address" placeholder="Address" />
+                  <TextInputField
+                    id="address"
+                    name="address"
+                    type="text"
+                    placeholder="Address"
+                    autocomplete="street-address"
+                  />
                 </OneField>
-
                 <ThreeFields>
-                  <Input type="city" name="city" placeholder="City" />
+                  <TextInputField
+                    id="city"
+                    name="city"
+                    type="text"
+                    placeholder="City"
+                    autocomplete="address-level2"
+                  />
                   <SelectContainer>
                     <SelectLabel htmlFor="state">State / Province</SelectLabel>
                     <Select
-                      name="state"
                       id="state"
-                      onChange={handleChange}
-                      value={formData.state}
+                      name="state"
+                      as="select"
+                      autoComplete="address-level1"
                     >
                       {states.map((state) => (
                         <option key={state} value={state}>
@@ -161,16 +112,22 @@ const ContactForm: React.FC = () => {
                       ))}
                     </Select>
                   </SelectContainer>
-                  <Input type="zip" name="zip" placeholder="ZIP" />
+                  <TextInputField
+                    id="zip"
+                    name="zip"
+                    type="text"
+                    placeholder="ZIP"
+                    autocomplete="postal-code"
+                  />
                 </ThreeFields>
                 <OneField>
                   <SelectContainer>
                     <SelectLabel htmlFor="country">Country</SelectLabel>
                     <Select
-                      name="country"
                       id="country"
-                      onChange={handleChange}
-                      value={formData.country}
+                      name="country"
+                      as="select"
+                      autoComplete="country"
                     >
                       {countries.map((country) => (
                         <option key={country} value={country}>
@@ -184,42 +141,67 @@ const ContactForm: React.FC = () => {
               <PaymentFields>
                 <Headline>Payment</Headline>
                 <Disclaimer>
-                  All transactions are secured and Encrypted
+                  All transactions are secured and encrypted
                 </Disclaimer>
                 <Payment>
                   <PaymentOption>
-                    <Input
+                    <Field
+                      checked
+                      as="input"
                       type="radio"
                       id="creditCard"
                       name="paymentMethod"
                       value="Credit Card"
-                      defaultChecked
+                      autoComplete="cc-type"
                     />
-                    <span>Credit Card</span>
+                    <label htmlFor="creditCard">Credit Card</label>
                   </PaymentOption>
                   <Cards>
-                    <img src="./visa.svg" />
-                    <img src="./masterCard.svg" />
-                    <img src="./amex.svg" />
-                    <img src="./dinnersClub.svg" />
-                    <img src="./others.svg" />
+                    {paymentImages.map((image) => (
+                      <img key={image.alt} src={image.src} alt={image.alt} />
+                    ))}
                   </Cards>
                 </Payment>
                 <PaymentContainer>
                   <OneField>
-                    <Input type="text" placeholder="Card number" />
+                    <TextInputField
+                      id="cardNumber"
+                      name="cardNumber"
+                      type="text"
+                      placeholder="Card number"
+                      autocomplete="cc-number"
+                      maxLength={16}
+                    />
                   </OneField>
                   <TwoFields>
-                    <Input type="text" placeholder="Expiration (MM/YY)" />
-                    <Input type="text" placeholder="Security code" />
+                    <TextInputField
+                      id="expiryDate"
+                      name="expiryDate"
+                      type="text"
+                      placeholder="Expiration (MM/YY)"
+                      autocomplete="cc-exp"
+                    />
+                    <TextInputField
+                      id="securityCode"
+                      name="securityCode"
+                      type="text"
+                      placeholder="Security code"
+                      autocomplete="cc-csc"
+                      maxLength={3}
+                    />
                   </TwoFields>
-                  <Input type="text" placeholder="Name on card" />
+                  <TextInputField
+                    id="nameOnCard"
+                    name="nameOnCard"
+                    type="text"
+                    placeholder="Name on card"
+                    autocomplete="cc-name"
+                  />
                 </PaymentContainer>
               </PaymentFields>
-
               <ButtonContainer>
                 <Button
-                  $variant="green"
+                  $variant={buttonColor}
                   type="submit"
                   disabled={!formik.isValid}
                 >
@@ -227,7 +209,7 @@ const ContactForm: React.FC = () => {
                 </Button>
               </ButtonContainer>
               <IconContainer>
-                <img src="./securityDesktop.svg" />
+                <img src="./securityDesktop.svg" alt="Security Icon" />
                 <Subtitle>All transactions are secured and encrypted</Subtitle>
               </IconContainer>
             </StyledForm>
@@ -236,7 +218,6 @@ const ContactForm: React.FC = () => {
       </Container>
       <CartContainer>
         {!isMobile && <CartSection />}
-
         <WhySection />
       </CartContainer>
     </Center>
