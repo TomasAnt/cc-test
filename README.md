@@ -20,3 +20,4 @@ The `config.ts` file is located in the root directory. Here's what you can do:
 - Add more products
 - Choose to display either the total price in the cart or the price per product
 - Control the button color options: "green", "blue", "red"
+- Change layout of contact form
