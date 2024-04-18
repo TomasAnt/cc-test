@@ -43,7 +43,11 @@ const ContactForm = () => {
           initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={(values, actions) => {
-            console.log(values);
+            console.log("Form submitted:", values);
+            window.alert(
+              "Payment was successful, check the console for details."
+            );
+            actions.resetForm();
             actions.setSubmitting(false);
           }}
         >

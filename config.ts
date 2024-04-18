@@ -10,9 +10,9 @@ export const products = [
   // You can add more products here too
 ];
 
-export const SWAP_CONTACT_AND_PAYMENT = true; // or false to swap layout positions;
+export const SWAP_CONTACT_AND_PAYMENT = false; // or false to swap layout positions;
 
-export const buttonColor = "red"; // Change this value to "red", "green", or "blue"
+export const buttonColor = "green"; // Change this value to "red", "green", or "blue"
 
 export const whySectionData = [
   {
