@@ -13,6 +13,7 @@ export const colors = {
   redButtonHover: "#CC513D",
   blueButton: "#4C7DDE",
   blueButtonHover: "#3266CA",
+  borderFocus: "#3362ab",
 };
 
 export type AppColorsType = typeof colors;

@@ -3,9 +3,9 @@ export const products = [
     id: 1,
     title: "Logoipsum IPL", // product title
     price: 99.99, // per item
-    count: 5,
+    count: 3,
     imageUrl: "./product.png",
-    displayMode: "each", // or 'each'
+    displayMode: "total", // or 'each'
   },
   // You can add more products here too
 ];

@@ -7,6 +7,7 @@ import {
   Box,
   BoxTitle,
   BoxParagraph,
+  Spacer,
 } from "./whySection.styled";
 
 const WhySection = () => {
@@ -17,15 +18,17 @@ const WhySection = () => {
         <WhyTitle>Why Choose Logoipsum</WhyTitle>
         <Separator />
       </Why>
-      {whySectionData.map((data, index) => (
-        <Content key={index}>
-          <img src={data.imgSrc} alt={data.title} />
-          <Box>
-            <BoxTitle>{data.title}</BoxTitle>
-            <BoxParagraph>{data.paragraph}</BoxParagraph>
-          </Box>
-        </Content>
-      ))}
+      <Spacer>
+        {whySectionData.map((data, index) => (
+          <Content key={index}>
+            <img src={data.imgSrc} alt={data.title} />
+            <Box>
+              <BoxTitle>{data.title}</BoxTitle>
+              <BoxParagraph>{data.paragraph}</BoxParagraph>
+            </Box>
+          </Content>
+        ))}
+      </Spacer>
     </>
   );
 };

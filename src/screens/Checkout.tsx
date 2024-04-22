@@ -4,14 +4,14 @@ import { ContactFormSection, PageLayout } from "./checkout.styled";
 
 const Checkout = () => {
   return (
-    <div>
+    <>
       <Navigation />
       <PageLayout>
         <ContactFormSection>
           <ContactForm />
         </ContactFormSection>
       </PageLayout>
-    </div>
+    </>
   );
 };
 

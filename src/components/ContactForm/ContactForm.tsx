@@ -10,7 +10,6 @@ import {
   Center,
   Container,
   Contact,
-  Headline,
   Select,
   SelectContainer,
   SelectLabel,
@@ -29,6 +28,9 @@ import {
   CartContainer,
   PaymentContainer,
   StyledForm,
+  PaymentHeading,
+  ContactHeading,
+  DeliveryHeading,
 } from "./contactForm.styled";
 import { initialValues } from "../../utils/formikConfig";
 import { TextInputField } from "../FormFields/FormFields";
@@ -55,7 +57,7 @@ const ContactForm = () => {
             <StyledForm onSubmit={formik.handleSubmit}>
               {isMobile && <CartSection />}
               <Contact>
-                <Headline>Contact</Headline>
+                <ContactHeading>Contact</ContactHeading>
                 <OneField>
                   <TextInputField
                     id="email"
@@ -67,7 +69,7 @@ const ContactForm = () => {
                 </OneField>
               </Contact>
               <Delivery>
-                <Headline>Delivery</Headline>
+                <DeliveryHeading>Delivery</DeliveryHeading>
                 <TwoFields>
                   <TextInputField
                     id="firstName"
@@ -143,7 +145,7 @@ const ContactForm = () => {
                 </OneField>
               </Delivery>
               <PaymentFields>
-                <Headline>Payment</Headline>
+                <PaymentHeading>Payment</PaymentHeading>
                 <Disclaimer>
                   All transactions are secured and encrypted
                 </Disclaimer>

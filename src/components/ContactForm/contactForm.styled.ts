@@ -20,7 +20,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 40px 38px 0 20px;
+  padding: 32px 38px 0 20px;
   background-color: ${({ theme }) => theme.colors.background};
   font-family: "Roboto", sans-serif;
 
@@ -30,15 +30,43 @@ export const Container = styled.div`
   }
 `;
 
-export const Headline = styled.h3`
+export const ContactHeading = styled.h3`
   font-size: ${({ theme }) => theme.fontSizes.h3};
   line-height: ${({ theme }) => theme.lineHeights.h3};
   color: ${({ theme }) => theme.colors.darkGrey};
-  font-weight: ${({ theme }) => theme.fontWeights.bold};
+  font-weight: ${({ theme }) => theme.fontWeights.semibold};
   margin-bottom: ${({ theme }) => theme.spacings.s16};
 
   @media ${({ theme }) => theme.media.maxSmallDesktop} {
     margin-bottom: 0;
+  }
+`;
+
+export const DeliveryHeading = styled.h3`
+  font-size: ${({ theme }) => theme.fontSizes.h3};
+  line-height: ${({ theme }) => theme.lineHeights.h3};
+  color: ${({ theme }) => theme.colors.darkGrey};
+  font-weight: ${({ theme }) => theme.fontWeights.semibold};
+  margin-bottom: ${({ theme }) => theme.spacings.s16};
+  margin-top: ${({ theme }) => theme.spacings.s16};
+
+  @media ${({ theme }) => theme.media.maxSmallDesktop} {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+`;
+
+export const PaymentHeading = styled.h3`
+  font-size: ${({ theme }) => theme.fontSizes.h3};
+  line-height: ${({ theme }) => theme.lineHeights.h3};
+  color: ${({ theme }) => theme.colors.darkGrey};
+  font-weight: ${({ theme }) => theme.fontWeights.semibold};
+  margin-bottom: ${({ theme }) => theme.spacings.s8};
+  margin-top: ${({ theme }) => theme.spacings.s16};
+
+  @media ${({ theme }) => theme.media.maxSmallDesktop} {
+    margin-bottom: 0;
+    margin-top: 0;
   }
 `;
 
@@ -48,7 +76,10 @@ export const SelectContainer = styled.div`
 `;
 
 export const Select = styled.select`
-  padding: 11px 0 0 10px;
+  padding: 14px 0 0 10px;
+  font-size: ${({ theme }) => theme.fontSizes.input};
+  font-family: "Roboto", sans-serif;
+  line-height: ${({ theme }) => theme.lineHeights.input};
   height: 50px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -59,8 +90,11 @@ export const Select = styled.select`
   background: url("./arrowDown.svg") no-repeat;
   background-position: right 17px center;
   background-size: 12px;
-  font-size: 12px;
-  line-height: 20px;
+
+  &:focus {
+    border-color: ${({ theme }) => theme.colors.borderFocus};
+    outline: none;
+  }
 
   .state-select {
     display: none;
@@ -79,7 +113,7 @@ export const SelectLabel = styled.label`
 export const Contact = styled.div`
   display: flex;
   flex-direction: column;
-  order: ${contactOrder}; /* Conditional order based on config */
+  order: ${contactOrder};
 
   @media ${({ theme }) => theme.media.maxSmallDesktop} {
     padding: 16px;
@@ -94,7 +128,7 @@ export const Contact = styled.div`
 `;
 
 export const PaymentFields = styled.div`
-  order: ${paymentOrder}; /* Conditional order based on config */
+  order: ${paymentOrder};
 
   @media ${({ theme }) => theme.media.maxSmallDesktop} {
     padding: 16px;
@@ -163,6 +197,10 @@ export const OneField = styled.div`
   margin-bottom: 16px;
   width: 100%;
   flex-direction: column;
+
+  @media ${({ theme }) => theme.media.maxSmallDesktop} {
+    margin-bottom: ${({ theme }) => theme.spacings.s12};
+  }
 `;
 
 export const TwoFields = styled.div`
@@ -170,6 +208,10 @@ export const TwoFields = styled.div`
   justify-content: space-between;
   gap: 12px;
   margin-bottom: 16px;
+
+  @media ${({ theme }) => theme.media.maxSmallDesktop} {
+    margin-bottom: ${({ theme }) => theme.spacings.s12};
+  }
 `;
 
 export const ThreeFields = styled.div`
@@ -181,7 +223,7 @@ export const ThreeFields = styled.div`
 
   @media ${({ theme }) => theme.media.maxSmallDesktop} {
     grid-template-columns: 1fr 1fr;
-
+    margin-bottom: ${({ theme }) => theme.spacings.s12};
     & > :nth-child(3) {
       grid-column: 1 / -1;
     }
@@ -206,6 +248,11 @@ export const Payment = styled.div`
   border-radius: 6px 6px 0px 0px;
   border: 1px solid #3362ab;
   background: #f0f5ff;
+
+  svg {
+    width: 36px;
+    height: 24px;
+  }
 `;
 
 export const PaymentOption = styled.div`
@@ -215,6 +262,7 @@ export const PaymentOption = styled.div`
 
   label {
     white-space: nowrap;
+    color: ${({ theme }) => theme.colors.darkGrey};
     font-size: ${({ theme }) => theme.fontSizes.input};
     line-height: ${({ theme }) => theme.lineHeights.input};
   }
@@ -224,11 +272,13 @@ export const PaymentContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.dividers};
   padding: ${({ theme }) => theme.spacings.s12};
   margin-bottom: ${({ theme }) => theme.spacings.s16};
+  border-right: 1px solid ${({ theme }) => theme.colors.border};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  border-left: 1px solid ${({ theme }) => theme.colors.border};
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
 
   @media ${({ theme }) => theme.media.maxSmallDesktop} {
-    border-right: 1px solid ${({ theme }) => theme.colors.border};
-    border-bottom: 1px solid ${({ theme }) => theme.colors.border};
-    border-left: 1px solid ${({ theme }) => theme.colors.border};
     border-radius: 6px;
     margin-bottom: 0;
   }
@@ -256,7 +306,7 @@ export const Subtitle = styled.p`
 
 export const CartContainer = styled.section`
   flex: 1;
-  padding: 16px 38px;
+  padding: 16px 20px 16px 38px;
   max-width: 600px;
   font-family: "Roboto", sans-serif;
 
