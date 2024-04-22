@@ -83,14 +83,15 @@ export const ImageContainer = styled.div`
 `;
 
 export const CartCount = styled.div`
+  display: flex;
   position: absolute;
   background-color: ${({ theme }) => theme.colors.paragraphColor};
   color: ${({ theme }) => theme.colors.background};
-  display: flex;
+  font-size: ${({ theme }) => theme.fontSizes.paragraph};
   left: 50px;
   top: -12px;
-  min-height: 30px;
-  min-width: 30px;
+  height: 21px;
+  width: 21px;
   justify-content: center;
   align-items: center;
   border-radius: 100%;
@@ -99,7 +100,7 @@ export const CartCount = styled.div`
 export const Title = styled.p`
   font-size: ${({ theme }) => theme.fontSizes.input};
   line-height: ${({ theme }) => theme.lineHeights.input};
-  font-weight: ${({ theme }) => theme.fontWeights.bold};
+  font-weight: ${({ theme }) => theme.fontWeights.semibold};
   color: ${({ theme }) => theme.colors.darkGrey};
 `;
 
@@ -108,6 +109,7 @@ export const Price = styled.p`
   line-height: ${({ theme }) => theme.lineHeights.input};
   font-weight: ${({ theme }) => theme.fontWeights.medium};
   color: ${({ theme }) => theme.colors.darkGrey};
+  margin-left: auto;
 `;
 
 export const Subtotal = styled.div`
@@ -140,14 +142,14 @@ export const Total = styled.div`
 export const TotalTitle = styled.p`
   font-size: ${({ theme }) => theme.fontSizes.h4};
   line-height: ${({ theme }) => theme.lineHeights.h4};
-  font-weight: ${({ theme }) => theme.fontWeights.bold};
+  font-weight: ${({ theme }) => theme.fontWeights.semibold};
   color: ${({ theme }) => theme.colors.darkGrey};
 `;
 
 export const TotalPrice = styled.p`
   font-size: ${({ theme }) => theme.fontSizes.h4};
   line-height: ${({ theme }) => theme.lineHeights.h4};
-  font-weight: ${({ theme }) => theme.fontWeights.bold};
+  font-weight: ${({ theme }) => theme.fontWeights.semibold};
   color: ${({ theme }) => theme.colors.darkGrey};
 `;
 

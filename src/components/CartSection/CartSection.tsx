@@ -1,4 +1,3 @@
-// CartSection.jsx
 import { useState } from "react";
 import { products } from "../../../config";
 import {
@@ -57,12 +56,12 @@ const CartSection = () => {
               <img src={product.imageUrl} alt={product.title} />
               <CartCount>{product.count}</CartCount>
               <Title>{product.title}</Title>
+              <Price>
+                {product.displayMode === "each"
+                  ? `$${product.price.toFixed(2)}/each`
+                  : `$${(product.price * product.count).toFixed(2)}`}
+              </Price>
             </ImageContainer>
-            <Price>
-              {product.displayMode === "each"
-                ? `$${product.price.toFixed(2)}/each`
-                : `$${(product.price * product.count).toFixed(2)}`}
-            </Price>
           </Product>
         ))}
         <Subtotal>

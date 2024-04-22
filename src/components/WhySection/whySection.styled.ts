@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Why = styled.div`
-  padding-top: ${({ theme }) => theme.spacings.s16};
+  padding-top: ${({ theme }) => theme.spacings.s24};
+  padding-bottom: ${({ theme }) => theme.spacings.s16};
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   gap: ${({ theme }) => theme.spacings.s16};
@@ -30,8 +31,13 @@ export const WhyTitle = styled.p`
 
 export const Content = styled.div`
   display: flex;
-  padding: 16px 0;
   align-items: flex-start;
+`;
+
+export const Spacer = styled.div`
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
 `;
 
 export const Box = styled.div`
@@ -53,4 +59,5 @@ export const BoxParagraph = styled.p`
   font-size: ${({ theme }) => theme.fontSizes.paragraph};
   color: ${({ theme }) => theme.colors.darkGrey};
   font-weight: ${({ theme }) => theme.fontWeights.normal};
+  max-width: 357px;
 `;

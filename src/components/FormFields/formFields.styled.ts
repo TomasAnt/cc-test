@@ -1,12 +1,17 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { InputHTMLAttributes } from "react";
+
+interface CustomInputProps extends InputHTMLAttributes<HTMLInputElement> {
+  $error?: string;
+}
 
 export const ErrorMsg = styled.div`
   position: absolute;
   color: red;
   font-size: 12px;
-  bottom: -15px;
-  left: 15px;
-  background-color: #fff;
+  bottom: -14px;
+  left: 1px;
+
   z-index: 1;
 
   @media ${({ theme }) => theme.media.maxSmallDesktop} {
@@ -15,7 +20,7 @@ export const ErrorMsg = styled.div`
   }
 `;
 
-export const Input = styled.input`
+export const Input = styled.input<CustomInputProps>`
   padding: ${({ theme }) => theme.spacings.s16};
   align-items: center;
   width: 100%;
@@ -23,8 +28,17 @@ export const Input = styled.input`
   border: 1px solid ${({ theme }) => theme.colors.border};
   transition: border-color 0.3s ease-in-out;
 
+  ${({ $error }) =>
+    $error &&
+    css`
+      border-color: red;
+    `}
+
   &:focus {
-    border-color: red;
+    border-color: ${({ $error, theme }) =>
+      $error ? "red" : theme.colors.borderFocus};
+    outline: none;
+
     &::placeholder {
       transform: translateY(-14px);
       font-size: 12px;
