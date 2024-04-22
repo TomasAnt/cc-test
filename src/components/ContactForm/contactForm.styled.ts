@@ -197,6 +197,10 @@ export const OneField = styled.div`
   margin-bottom: 16px;
   width: 100%;
   flex-direction: column;
+
+  @media ${({ theme }) => theme.media.maxSmallDesktop} {
+    margin-bottom: ${({ theme }) => theme.spacings.s12};
+  }
 `;
 
 export const TwoFields = styled.div`
@@ -204,6 +208,10 @@ export const TwoFields = styled.div`
   justify-content: space-between;
   gap: 12px;
   margin-bottom: 16px;
+
+  @media ${({ theme }) => theme.media.maxSmallDesktop} {
+    margin-bottom: ${({ theme }) => theme.spacings.s12};
+  }
 `;
 
 export const ThreeFields = styled.div`
@@ -215,7 +223,7 @@ export const ThreeFields = styled.div`
 
   @media ${({ theme }) => theme.media.maxSmallDesktop} {
     grid-template-columns: 1fr 1fr;
-
+    margin-bottom: ${({ theme }) => theme.spacings.s12};
     & > :nth-child(3) {
       grid-column: 1 / -1;
     }
@@ -240,6 +248,11 @@ export const Payment = styled.div`
   border-radius: 6px 6px 0px 0px;
   border: 1px solid #3362ab;
   background: #f0f5ff;
+
+  svg {
+    width: 36px;
+    height: 24px;
+  }
 `;
 
 export const PaymentOption = styled.div`

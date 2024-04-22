@@ -11,6 +11,7 @@ export const Why = styled.div`
 
   @media ${({ theme }) => theme.media.maxSmallDesktop} {
     grid-template-columns: 1fr 2fr 1fr;
+    padding-top: 0;
   }
 `;
 
@@ -38,6 +39,7 @@ export const Spacer = styled.div`
   display: flex;
   gap: 16px;
   flex-direction: column;
+  padding-bottom: ${({ theme }) => theme.spacings.s32};
 `;
 
 export const Box = styled.div`
