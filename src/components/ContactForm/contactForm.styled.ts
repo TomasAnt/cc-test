@@ -320,7 +320,7 @@ export const Subtitle = styled.p`
 
 export const CartContainer = styled.section`
   flex: 1;
-  padding: 16px 0 16px 48px;
+  padding: 16px 16px 16px 38px;
   max-width: 100%;
   font-family: "Roboto", sans-serif;
 
