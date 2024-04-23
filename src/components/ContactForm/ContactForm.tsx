@@ -1,4 +1,4 @@
-import { Formik, Field } from "formik";
+import { Formik } from "formik";
 import Button from "../Button/Button";
 import { states, countries, paymentImages, buttonColor } from "../../../config";
 import CartSection from "../CartSection/CartSection";
@@ -31,6 +31,8 @@ import {
   PaymentHeading,
   ContactHeading,
   DeliveryHeading,
+  StyledLabel,
+  StyledRadioButton,
 } from "./contactForm.styled";
 import { initialValues } from "../../utils/formikConfig";
 import { TextInputField } from "../FormFields/FormFields";
@@ -151,16 +153,16 @@ const ContactForm = () => {
                 </Disclaimer>
                 <Payment>
                   <PaymentOption>
-                    <Field
-                      checked
+                    <StyledRadioButton
                       as="input"
                       type="radio"
                       id="creditCard"
                       name="paymentMethod"
                       value="Credit Card"
                       autoComplete="cc-type"
+                      defaultChecked
                     />
-                    <label htmlFor="creditCard">Credit Card</label>
+                    <StyledLabel htmlFor="creditCard">Credit Card</StyledLabel>
                   </PaymentOption>
                   <Cards>
                     {paymentImages.map((image) => (

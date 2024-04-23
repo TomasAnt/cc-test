@@ -20,7 +20,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 32px 38px 0 20px;
+  padding: 32px 38px 300px 20px;
   background-color: ${({ theme }) => theme.colors.background};
   font-family: "Roboto", sans-serif;
 
@@ -259,13 +259,6 @@ export const PaymentOption = styled.div`
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacings.s16};
-
-  label {
-    white-space: nowrap;
-    color: ${({ theme }) => theme.colors.darkGrey};
-    font-size: ${({ theme }) => theme.fontSizes.input};
-    line-height: ${({ theme }) => theme.lineHeights.input};
-  }
 `;
 
 export const PaymentContainer = styled.div`
@@ -284,9 +277,30 @@ export const PaymentContainer = styled.div`
   }
 `;
 
+export const StyledRadioButton = styled.input`
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  accent-color: #3362ab;
+`;
+
+export const StyledLabel = styled.label`
+  white-space: nowrap;
+  color: ${({ theme }) => theme.colors.darkGrey};
+  font-size: ${({ theme }) => theme.fontSizes.input};
+  line-height: ${({ theme }) => theme.lineHeights.input};
+  cursor: pointer;
+`;
+
 export const Cards = styled.div`
   display: flex;
   gap: 3px;
+
+  @media ${({ theme }) => theme.media.maxSmallPhone} {
+    img {
+      width: 30px;
+    }
+  }
 `;
 
 export const Center = styled.div`
@@ -306,12 +320,11 @@ export const Subtitle = styled.p`
 
 export const CartContainer = styled.section`
   flex: 1;
-  padding: 16px 20px 16px 38px;
-  max-width: 600px;
+  padding: 16px 0 16px 48px;
+  max-width: 100%;
   font-family: "Roboto", sans-serif;
 
   @media ${({ theme }) => theme.media.maxSmallDesktop} {
-    max-width: 100%;
     background-color: ${({ theme }) => theme.colors.lightGrey};
     padding: ${({ theme }) => theme.spacings.s16};
   }

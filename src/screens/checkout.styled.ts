@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const PageLayout = styled.div`
   display: flex;
-  max-width: 1200px;
+  max-width: 1072px;
   margin: 0 auto;
   overflow: hidden;
 `;
