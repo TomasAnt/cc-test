@@ -19,7 +19,7 @@ export const colors = {
 export type AppColorsType = typeof colors;
 
 export const responsiveBreakPoints = {
-  maxSmallPhone: "(max-width: 360px)",
+  maxSmallPhone: "(max-width: 380px)",
   maxPhone: "(max-width: 480px)",
   maxTablet: "(max-width: 768px)",
   maxSmallDesktop: "(max-width: 992px)",

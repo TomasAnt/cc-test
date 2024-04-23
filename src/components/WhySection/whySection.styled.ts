@@ -61,5 +61,4 @@ export const BoxParagraph = styled.p`
   font-size: ${({ theme }) => theme.fontSizes.paragraph};
   color: ${({ theme }) => theme.colors.darkGrey};
   font-weight: ${({ theme }) => theme.fontWeights.normal};
-  max-width: 357px;
 `;

@@ -10,7 +10,7 @@ export const NavWrapper = styled.section`
 `;
 
 export const NavContent = styled.nav`
-  max-width: 1200px;
+  max-width: 1072px;
   display: flex;
   justify-content: space-between;
   margin: 0 auto;

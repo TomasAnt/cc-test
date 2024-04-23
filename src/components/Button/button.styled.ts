@@ -24,6 +24,11 @@ const defaultButton = css<StyledButtonProps>`
   border: none;
   border-radius: 4px;
   box-shadow: 0px 4px 10px 0px rgba(67, 40, 16, 0.24);
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    transition: background-color 0.3s ease-in-out;
+  }
 
   @media ${({ theme }) => theme.media.maxPhone} {
     font-size: ${({ theme }) => theme.fontSizes.input};
@@ -38,7 +43,6 @@ const greenButton = css`
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.greenButtonHover};
-    transition: all 0.3s ease-in;
   }
 `;
 
@@ -47,7 +51,6 @@ const redButton = css`
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.redButtonHover};
-    transition: all 0.3s ease-in;
   }
 `;
 const blueButton = css`
@@ -55,7 +58,6 @@ const blueButton = css`
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.blueButtonHover};
-    transition: all 0.3s ease-in;
   }
 `;
 

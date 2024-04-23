@@ -70,7 +70,6 @@ export const ImageContainer = styled.div`
   margin-top: 16px;
   gap: ${({ theme }) => theme.spacings.s16};
   position: relative;
-
   width: 100%;
 
   img {
